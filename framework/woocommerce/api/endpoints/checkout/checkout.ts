@@ -6,7 +6,7 @@ import {
 import associateCustomerWithCheckoutMutation from '../../../utils/mutations/associate-customer-with-checkout'
 import type { CheckoutEndpoint } from '.'
 
-const checkout: CheckoutEndpoint['handlers']['checkout'] = async ({
+const checkout: CheckoutEndpoint['handlers']['getCheckout'] = async ({
   req,
   res,
   config,
