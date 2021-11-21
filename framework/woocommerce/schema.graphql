@@ -32980,6 +32980,10 @@ input TagToContentNodeConnectionWhereArgs {
   """
   hasPassword: Boolean
 
+"""
+Connection between the tag type and the ContentNode type
+"""
+type TagToContentNodeConnection {
   """
   Specific ID of the object
   """
@@ -33030,6 +33034,10 @@ input TagToContentNodeConnectionWhereArgs {
   """
   parentNotIn: [ID]
 
+"""
+Arguments for filtering the TagToContentNodeConnection connection
+"""
+input TagToContentNodeConnectionWhereArgs {
   """
   Show posts with a specific password.
   """
@@ -33357,11 +33365,19 @@ type TaxRate implements Node {
   """
   class: TaxClassEnum
 
+"""
+Connection between the tag type and the Taxonomy type
+"""
+type TagToTaxonomyConnectionEdge {
   """
   Whether or not this is a compound rate.
   """
   compound: Boolean
 
+"""
+Tax class enumeration
+"""
+enum TaxClassEnum {
   """
   Country ISO 3166 code.
   """
@@ -33372,6 +33388,10 @@ type TaxRate implements Node {
   """
   databaseId: Int
 
+"""
+a tax line object
+"""
+type TaxLine {
   """
   The globally unique identifier for the tax rate.
   """
@@ -33438,6 +33458,10 @@ enum TaxRateIdTypeEnum {
   """
   DATABASE_ID
 
+"""
+A Tax rate object
+"""
+type TaxRate implements Node {
   """
   Identify a resource by the (hashed) Global ID.
   """
@@ -33537,6 +33561,18 @@ type Taxonomy implements Node {
   """
   restControllerClass: String
 
+"""
+Options for ordering the connection
+"""
+input TaxRateConnectionOrderbyInput {
+  field: TaxRateConnectionOrderbyEnum!
+  order: OrderEnum
+}
+
+"""
+The Type of Identifier used to fetch a single Tax rate. Default is ID.
+"""
+enum TaxRateIdTypeEnum {
   """
   Whether to show the taxonomy as part of a tag cloud widget. This field is equivalent to WP_Taxonomy-&gt;show_tagcloud
   """
@@ -33547,6 +33583,19 @@ type Taxonomy implements Node {
   """
   showInAdminColumn: Boolean
 
+"""
+Product tax status enumeration
+"""
+enum TaxStatusEnum {
+  NONE
+  SHIPPING
+  TAXABLE
+}
+
+"""
+A taxonomy object
+"""
+type Taxonomy implements Node {
   """
   Whether to add the post type to the GraphQL Schema.
   """
@@ -33673,6 +33722,10 @@ type TaxonomyToContentTypeConnection {
   """
   nodes: [ContentType]
 
+"""
+Allowed taxonomies
+"""
+enum TaxonomyEnum {
   """
   Information about pagination in a connection.
   """
@@ -33773,6 +33826,10 @@ interface TermNode implements Node & UniformResourceIdentifiable {
   """
   isContentNode: Boolean!
 
+"""
+The Type of Identifier used to fetch a single Taxonomy node. To be used along with the "id" field. Default is "ID".
+"""
+enum TaxonomyIdTypeEnum {
   """
   Whether the object is restricted from the current viewer
   """
@@ -33783,6 +33840,21 @@ interface TermNode implements Node & UniformResourceIdentifiable {
   """
   isTermNode: Boolean!
 
+"""
+Taxonomy query operators
+"""
+enum TaxonomyOperatorEnum {
+  AND
+  EXISTS
+  IN
+  NOT_EXISTS
+  NOT_IN
+}
+
+"""
+Connection between the Taxonomy type and the ContentType type
+"""
+type TaxonomyToContentTypeConnection {
   """
   The link to the term
   """
@@ -33798,6 +33870,10 @@ interface TermNode implements Node & UniformResourceIdentifiable {
   """
   slug: String
 
+"""
+An edge in a connection
+"""
+type TaxonomyToContentTypeConnectionEdge {
   """
   The ID of the term group that this term object belongs to
   """
@@ -33808,6 +33884,10 @@ interface TermNode implements Node & UniformResourceIdentifiable {
   """
   termTaxonomyId: Int
 
+"""
+Terms are nodes within a Taxonomy, used to group and relate other nodes.
+"""
+interface TermNode implements Node & UniformResourceIdentifiable {
   """
   The unique resource identifier path
   """
@@ -33943,6 +34023,10 @@ enum TermObjectsConnectionOrderbyEnum {
   """
   TERM_GROUP
 
+"""
+Connection between the TermNode type and the EnqueuedScript type
+"""
+type TermNodeToEnqueuedScriptConnection {
   """
   Order the connection by term id.
   """
@@ -33963,6 +34047,10 @@ type Theme implements Node {
   """
   author: String
 
+"""
+An edge in a connection
+"""
+type TermNodeToEnqueuedScriptConnectionEdge {
   """
   URI for the author/company website. This field is equivalent to WP_Theme-&gt;get( &quot;AuthorURI&quot; ).
   """
@@ -33973,6 +34061,10 @@ type Theme implements Node {
   """
   description: String
 
+"""
+Connection between the TermNode type and the EnqueuedStylesheet type
+"""
+type TermNodeToEnqueuedStylesheetConnection {
   """
   The globally unique identifier of the theme object.
   """
@@ -33988,6 +34080,10 @@ type Theme implements Node {
   """
   name: String
 
+"""
+An edge in a connection
+"""
+type TermNodeToEnqueuedStylesheetConnectionEdge {
   """
   The URL of the screenshot for the theme. The screenshot is intended to give an overview of what the theme looks like. This field is equivalent to WP_Theme-&gt;get_screenshot().
   """
@@ -33998,6 +34094,10 @@ type Theme implements Node {
   """
   slug: String
 
+"""
+Options for ordering the connection by
+"""
+enum TermObjectsConnectionOrderbyEnum {
   """
   URI for the author/company website. This field is equivalent to WP_Theme-&gt;get( &quot;Tags&quot; ).
   """
@@ -34108,6 +34208,10 @@ input UpdateCommentInput {
   """
   author: String
 
+"""
+Any node that has a URI
+"""
+interface UniformResourceIdentifiable {
   """
   The email of the comment's author.
   """
@@ -34128,6 +34232,10 @@ input UpdateCommentInput {
   """
   commentOn: Int
 
+"""
+Input for the UpdateCategory mutation
+"""
+input UpdateCategoryInput {
   """
   Content of the comment.
   """
@@ -34168,6 +34276,10 @@ type UpdateCommentPayload {
   """
   comment: Comment
 
+"""
+The payload for the UpdateCategory mutation
+"""
+type UpdateCategoryPayload {
   """
   Whether the mutation succeeded. If the comment is not approved, the server will not return the comment to a non authenticated user, but a success message can be returned if the create succeeded, and the client can optimistically add the comment to the client cache
   """
@@ -34183,6 +34295,10 @@ input UpdateCouponInput {
   """
   amount: Float
 
+"""
+Input for the updateComment mutation
+"""
+input UpdateCommentInput {
   """
   This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
   """
@@ -34238,6 +34354,10 @@ input UpdateCouponInput {
   """
   freeShipping: Boolean
 
+"""
+The payload for the updateComment mutation
+"""
+type UpdateCommentPayload {
   """
   Unique identifier for the object.
   """
@@ -34253,6 +34373,10 @@ input UpdateCouponInput {
   """
   limitUsageToXItems: Int
 
+"""
+Input for the updateCoupon mutation
+"""
+input UpdateCouponInput {
   """
   Maximum order amount allowed when using the coupon.
   """
@@ -34333,12 +34457,12 @@ input UpdateCustomerInput {
   """
   A string containing the user's email address.
   """
-  email: String
+  individualUse: Boolean
 
   """
   	The user's first name.
   """
-  firstName: String
+  limitUsageToXItems: Int
 
   """
   The ID of the user
@@ -34353,7 +34477,7 @@ input UpdateCustomerInput {
   """
   The user's last name.
   """
-  lastName: String
+  minimumAmount: String
 
   """
   User's locale.
@@ -34521,6 +34645,10 @@ input UpdateMediaItemInput {
   """
   fileType: MimeTypeEnum
 
+"""
+Input for the updateItemQuantities mutation
+"""
+input UpdateItemQuantitiesInput {
   """
   The ID of the mediaItem object
   """
@@ -34656,6 +34784,10 @@ input UpdateOrderInput {
   """
   shippingLines: [ShippingLineInput]
 
+"""
+Input for the updateOrder mutation
+"""
+input UpdateOrderInput {
   """
   Order status
   """
@@ -34825,7 +34957,7 @@ input UpdatePageInput {
   """
   The password used to protect the content of the object
   """
-  password: String
+  name: String
 
   """
   The slug of the object
@@ -35095,7 +35227,7 @@ input UpdateProductTagInput {
   """
   The ID of the productTag object to update
   """
-  id: ID!
+  date: String
 
   """
   The name of the product_tag object to mutate
@@ -35212,6 +35344,10 @@ input UpdateReviewInput {
   """
   content: String
 
+"""
+The payload for the UpdateProductCategory mutation
+"""
+type UpdateProductCategoryPayload {
   """
   The date of the object. Preferable to enter as year/month/day ( e.g. 01/31/2017 ) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17
   """
@@ -35297,6 +35433,10 @@ input UpdateSettingsInput {
   """
   generalSettingsStartOfWeek: Int
 
+"""
+The payload for the UpdateProductType mutation
+"""
+type UpdateProductTypePayload {
   """
   A time format for all time strings.
   """
@@ -35307,6 +35447,10 @@ input UpdateSettingsInput {
   """
   generalSettingsTimezone: String
 
+"""
+Input for the updateReview mutation
+"""
+input UpdateReviewInput {
   """
   Site title.
   """
@@ -35585,6 +35729,10 @@ input UpdateUserInput {
   """
   richEditing: String
 
+"""
+Input for the updateShippingMethod mutation
+"""
+input UpdateShippingMethodInput {
   """
   An array of roles to be assigned to the user.
   """
@@ -35630,6 +35778,10 @@ input UpdateVisibleProductInput {
   """
   clientMutationId: String
 
+"""
+The payload for the UpdateTag mutation
+"""
+type UpdateTagPayload {
   """
   The description of the product_visibility object
   """
@@ -35640,6 +35792,10 @@ input UpdateVisibleProductInput {
   """
   id: ID!
 
+"""
+Input for the updateUser mutation
+"""
+input UpdateUserInput {
   """
   The name of the product_visibility object to mutate
   """
@@ -36225,6 +36381,10 @@ input UserToCommentConnectionWhereArgs {
   """
   commentNotIn: [ID]
 
+"""
+Connection between the User type and the Comment type
+"""
+type UserToCommentConnection {
   """
   Include comments of a given type.
   """
@@ -36240,6 +36400,10 @@ input UserToCommentConnectionWhereArgs {
   """
   commentTypeNotIn: String
 
+"""
+An edge in a connection
+"""
+type UserToCommentConnectionEdge {
   """
   Content object author ID to limit results by.
   """
