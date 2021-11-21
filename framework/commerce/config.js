@@ -14,6 +14,7 @@ const PROVIDERS = [
   'shopify',
   'swell',
   'vendure',
+  'ordercloud',
   'woocommerce',
 ]
 
