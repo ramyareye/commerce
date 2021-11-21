@@ -26,11 +26,11 @@ const ProductCard: FC<Props> = ({
   noNameTag = false,
   variant = 'default',
 }) => {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
+  // const { price } = usePrice({
+  //   amount: product.price.value,
+  //   baseAmount: product.price.retailPrice,
+  //   currencyCode: product.price.currencyCode!,
+  // })
 
   const rootClassName = cn(
     s.root,
@@ -77,7 +77,7 @@ const ProductCard: FC<Props> = ({
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
+                  {/* {`${price} ${product.price?.currencyCode}`} */}
                 </div>
               </div>
             )}
